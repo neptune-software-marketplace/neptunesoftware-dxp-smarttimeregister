@@ -1,0 +1,12 @@
+.nepHCMHappinessIcon .sapUiIcon {
+    margin: 0 .5rem;
+    font-size: 3.5rem;
+}
+.nepGridXSmall .nepHCMHappinessIcon .sapUiIcon {
+    margin: 0 .325rem;
+    font-size: 2.5rem;
+}
+
+.sapMIBar.sapMTB .sapMBarChild ~ .sapMBarChild {
+margin: 0rem 1.5rem 0rem 0rem;
+}

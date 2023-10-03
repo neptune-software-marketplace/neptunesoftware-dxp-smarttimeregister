@@ -1,0 +1,2 @@
+addActivity();
+processActivities();

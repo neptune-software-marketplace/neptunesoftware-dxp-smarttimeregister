@@ -1,0 +1,2 @@
+ResponsivePopover.close();
+// $("#oPanel-content").empty();

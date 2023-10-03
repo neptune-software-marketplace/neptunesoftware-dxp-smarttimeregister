@@ -1,0 +1,102 @@
+var start_Time = DateTimePicker1.getDateValue();
+var end_Time = DateTimePicker.getDateValue();
+var isOverlap = false;
+var filledActivities = modelModelArray.getData();
+cahceCheck = true;
+for (var i = 0; i < filledActivities.length; i++) {
+    var activity = filledActivities[i];
+    if (activity.title != "Working hour") {
+        if (
+            (start_Time >= activity.start && start_Time < activity.end) ||
+            (start_Time <= activity.start && start_Time >= activity.end)
+        ) {
+            isOverlap = true;
+            break;
+        }
+    }
+}
+
+if (isOverlap) {
+    jQuery.sap.require("sap.m.MessageBox");
+    sap.m.MessageBox.show(
+        "The entered hours overlap with another activity's hours. You can update it by clicking on the activity",
+        {
+            icon: sap.m.MessageBox.Icon.INFORMATION,
+            title: "Warning",
+            actions: [sap.m.MessageBox.Action.OK],
+            onClose: function (oAction) {
+                if (oAction == "OK") {
+                }
+            },
+        }
+    );
+} else {
+    // debugger;
+    if (sap.ushell && sap.ushell.Container) {
+        var username = AppCache.userInfo.email;
+    } else {
+        var username = "kaan.koska@neptune-software.com";
+    }
+    if (username == null) {
+        username = "admin";
+    }
+    
+    var options = {
+        data: {
+            User_Name: username,
+            info: TextAreaDetails.getValue(),
+            title: InputTitle.getValue(),
+            type: "Type07",
+            start: DateTimePicker1.getDateValue(),
+            end: DateTimePicker.getDateValue(),
+            Uniqe_id : TitleID.getText()
+        },
+    };
+    apiRestAPITimesPost(options);
+
+    oDialog.close();
+    filledActivities = [];
+}
+
+// var start_Time = DateTimePicker1.getDateValue();
+// var end_Time = DateTimePicker.getDateValue();
+// var isOverlap = false;
+// var filledActivities = modelModelArray.getData();
+
+// for (var i = 0; i < filledActivities.length; i++) {
+//   var activity = filledActivities[i];
+//   if(activity.title != "Working hour"){
+
+//   if (
+//     (start_Time >= activity.start && start_Time < activity.end) ||
+//     (start_Time <= activity.start && start_Time >= activity.end)
+//   ) {
+//     isOverlap = true;
+//     break;
+//   }
+
+//   }
+
+// }
+
+// if (isOverlap) {
+//    jQuery.sap.require("sap.m.MessageBox");
+//    sap.m.MessageBox.show(
+//        "The entered hours overlap with another activity's hours. You can update it by clicking on the activity", {
+//            icon: sap.m.MessageBox.Icon.INFORMATION,
+//            title: "Warning",
+//            actions: [sap.m.MessageBox.Action.OK],
+//            onClose: function(oAction) {
+//                if(oAction == "OK"){
+
+//                }
+
+//             }
+//        }
+//      );
+// }else{
+//         addActivity1()
+//         processActivities()
+//         oDialog.close();
+//         filledActivities = [];
+// }

@@ -1,0 +1,17 @@
+PanelEmptyWorkingHourList.setVisible(false);
+SimpleFormEditEmptyWorkingHours.setVisible(true);
+ButtonSave.setVisible(true);
+ButtonEdit.setVisible(false);
+
+
+var selectedItems = ListEmptyActivities.getSelectedItems(); 
+
+for (var i = 0; i < selectedItems.length; i++) {
+  var selectedItem = selectedItems[i];
+  var bindingContext = selectedItem.getBindingContext();
+  var data = bindingContext.getObject();
+
+  var property1 = data.start;
+  var property2 = data.end;
+
+}

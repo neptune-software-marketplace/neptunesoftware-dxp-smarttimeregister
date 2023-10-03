@@ -1,0 +1,49 @@
+var data = modeloSinglePlanningCalendar.getData();
+var updatedStartTime = new Date(DateTimePicker1.getValue());
+var updatedEndTime = new Date(DateTimePicker.getValue());
+var updatedTitle = InputTitle.getValue();
+var updatedDetails = TextAreaDetails.getValue();
+var id = generateUUID();
+if (sap.ushell && sap.ushell.Container) {
+  var username = AppCache.userInfo.email;
+}else{
+var username = "kaan.koska@neptune-software.com";
+sap.m.MessageToast.show("User Name Error");
+}
+if(username == null){
+username = "admin";
+sap.m.MessageToast.show("User Name Error");
+}
+
+for (var i = 0; i < data.length; i++) {
+  var dataStartTime = new Date(data[i].start); 
+  var dataEndTime = new Date(data[i].end); 
+
+  if (
+    dataStartTime.getTime() === updatedStartTime.getTime() &&
+    dataEndTime.getTime() === updatedEndTime.getTime()
+  ) {
+
+    data[i].info = updatedDetails;
+    data[i].title = updatedTitle;
+    var options = {
+    parameters: {
+        "where": JSON.stringify({
+         Uniqe_id : TitleID1.getText()
+        })  
+    },
+    data: {
+        "User_Name": username,
+        "info": updatedDetails,
+        "title": updatedTitle,
+        "start": updatedStartTime,
+        "end": updatedEndTime,
+    }
+};
+apiRestAPITimesPost(options);
+    break;
+  }
+}
+
+cahceCheck = true;
+oDialog.close();

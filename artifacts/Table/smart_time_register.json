@@ -1,0 +1,62 @@
+{
+	"id": "6de65a0c-75f9-ed11-907c-000d3a654fb6",
+	"createdAt": "2023-05-23T14:21:06.643Z",
+	"createdBy": "kaan.koska@neptune-software.com",
+	"fields": [
+		{
+			"id": "120e6a93-a92c-43ca-9ab6-659dc6d82a2d",
+			"fieldName": "User_Name",
+			"fieldType": "text",
+			"isUnique": false,
+			"isNullable": false
+		},
+		{
+			"id": "433ab573-4a60-4590-9811-b40ed4fb6e62",
+			"fieldName": "info",
+			"fieldType": "text",
+			"isUnique": false,
+			"isNullable": true
+		},
+		{
+			"id": "afa17fc6-23c3-4c1e-bb4a-094ed7a7b5cb",
+			"fieldName": "title",
+			"fieldType": "text",
+			"isUnique": false
+		},
+		{
+			"id": "84ce814a-e913-471b-b597-ccf28d17488a",
+			"fieldName": "type",
+			"fieldType": "text",
+			"isUnique": false
+		},
+		{
+			"id": "cb8bd3ff-4977-4ef0-9d4f-4363611b3517",
+			"fieldName": "start",
+			"fieldType": "timestamptz",
+			"isUnique": false
+		},
+		{
+			"id": "b67e2643-3947-4d9b-f0e9-7e538fb71039",
+			"fieldName": "end",
+			"fieldType": "timestamptz",
+			"isUnique": false
+		},
+		{
+			"id": "78e8bec3-6c53-4b60-aa62-f7384701e4b6",
+			"fieldName": "Uniqe_id",
+			"fieldType": "uuid",
+			"isUnique": true,
+			"isNullable": true
+		}
+	],
+	"indices": [],
+	"foreignKeys": [],
+	"name": "smart_time_register",
+	"description": null,
+	"ver": "23.10.2.1627",
+	"enableAudit": false,
+	"includeDataInPackage": false,
+	"package": "3baaf607-2761-ee11-9937-0022489e2195",
+	"rolesRead": [],
+	"rolesWrite": []
+}

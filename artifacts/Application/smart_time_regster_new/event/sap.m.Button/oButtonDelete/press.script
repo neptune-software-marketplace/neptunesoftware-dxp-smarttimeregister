@@ -1,0 +1,65 @@
+// debugger;
+var data = modeloSinglePlanningCalendar.getData();
+var updatedStartTime = new Date(DateTimePicker1.getValue());
+var updatedEndTime = new Date(DateTimePicker.getValue());
+var updatedTitle = InputTitle.getValue();
+
+if (sap.ushell && sap.ushell.Container) {
+  var username = AppCache.userInfo.email;
+}else{
+var username = "";
+}
+if (username == null) {
+    username = "admin";
+}
+for (var i = 0; i < data.length; i++) {
+    var dataStartTime = new Date(data[i].start);
+    var dataEndTime = new Date(data[i].end);
+    if (
+        dataStartTime.getTime() === updatedStartTime.getTime() &&
+        dataEndTime.getTime() === updatedEndTime.getTime()
+    ) {
+        data.splice(i, 1);
+        var options = {
+            parameters: {
+                where: JSON.stringify({
+                    Uniqe_id : TitleID1.getText()
+                    // start: updatedStartTime,
+                    // end: updatedEndTime,
+                    // User_Name: username,
+                }), // Optional
+            },
+        };
+        apiRestAPIDelete(options);
+        break;
+    }
+}
+
+//modeloSinglePlanningCalendar.setData(data);
+//modelModelArrayMeetings.setData(data);
+//processActivities();
+ResponsivePopover.close();
+
+
+// // debugger;
+// var data = modeloSinglePlanningCalendar.getData();
+// var updatedStartTime = new Date(DateTimePicker1.getValue());
+// var updatedEndTime = new Date(DateTimePicker.getValue());
+// var updatedTitle = InputTitle.getValue();
+
+// for (var i = 0; i < data.length; i++) {
+//   var dataStartTime = new Date(data[i].start); 
+//   var dataEndTime = new Date(data[i].end); 
+//   if (
+//     dataStartTime.getTime() === updatedStartTime.getTime() &&
+//     dataEndTime.getTime() === updatedEndTime.getTime() 
+//   ) {
+//     data.splice(i, 1);
+//     break;
+//   }
+// }
+
+// modeloSinglePlanningCalendar.setData(data);
+// modelModelArrayMeetings.setData(data);
+// processActivities();
+// ResponsivePopover.close();
